@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+{% endblock customcss %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">雑談</h1>
+    <p class="lead">業務中にふと思ったことを呟くのもよし、飲み会のお誘いをするもよし！</p>
+  </div>
+</div>
+<div class='container'>
+  <a href="{% url 'create' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
+  {% for item in object_list %}
+  <div class="alert alert-success" role="alert">
+    <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
+    <p>投稿者：{{ item.author }}</p>
+    <p>日時：{{ item.posted_at }}</p>
+    <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">いいね{{ item.good }}</a>
+    <a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button" aria-disabled="true">既読{{ item.read }}</a>
+  </div>
+  {% endfor %}
+  <a href="{% url 'index' %}">トップページに戻る</a>
+{% endblock content %}

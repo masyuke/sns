@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block customcss %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/show.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">業務計画詳細</h1>
+    <p class="lead">進捗状況の確認、報告をしよう！（完了の際は完了タスクに移動を忘れずに！）</p>
+  </div>
+</div>
+<div class='container'>
+  <h1>進行中</h1>
+  <div class="alert alert-success task" role="alert" id="move">
+    <p>タイトル：{{ object.title }}</p>
+    <p>内容：{{ object.memo }}</p>
+    <p>期日：{{ object.duedate }}</p>
+  </div>
+  <h1>完了</h1>
+  <div class='todo' style='height:146px; background-color: red;' >
+  </div>
+<a href="{% url 'todo' %}">業務一覧ページへ</a>
+{% else %}
+ログインしてください<br>
+<a href="{% url 'login' %}">ログインページへ</a>
+{% endif %}
+<script type="text/javascript" src="{% static 'js/move.js' %}"></script>
+{% endblock content %}
+

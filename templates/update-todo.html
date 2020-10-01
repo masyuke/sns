@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block customcss %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/update-todo.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="card mx-auto w-50">
+  <div class="card-body">
+    <h5 class="card-title">業務計画</h5>
+    <h6 class="card-subtitle mb-2 text-muted">編集</h6>
+    <form action='' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+      {{form.as_p}}
+      <input type='submit' value='更新する' class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<a href="{% url 'todo' %}" class='url'>業務一覧ページへ</a>
+{% else %}
+ログインしてください<br>
+<a href="{% url 'login' %}">ログインページへ</a>
+{% endif %}
+{% endblock content %}

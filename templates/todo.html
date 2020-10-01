@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block customcss %}
+{% endblock customcss %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">業務計画・報告</h1>
+    <p class="lead">業務計画や業務内容に関する報告。報連相を徹底しよう！</p>
+  </div>
+</div>
+<div class='container'>
+  <a href="{% url 'create-todo' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
+{% for item in object_list %}
+  <div class="alert alert-{{ item.priority }}" role="alert">
+    <p>{{ item.title }}</p>
+    <p>投稿者：{{ user.username }}</p>
+    <p>期日：{{ item.duedate }}</p>
+    <a href="{% url 'update-todo' item.pk %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集</a>
+    <a href="{% url 'delete-todo' item.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">削除</a>
+    <a href="{% url 'show' item.pk %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+  </div>
+{% endfor %}
+<a href="{% url 'index' %}">トップページに戻る</a>
+</div>
+{% else %}
+ログインしてください<br>
+<a href="{% url 'login' %}">ログインページへ</a>
+{% endif %}
+{% endblock content %}
+

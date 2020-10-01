@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block customcss %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/index.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+{% load static %}
+<div class="jumbotron title" style="background:url(static/images/top.jpg); background-size:cover; background-position: center;">
+  <h1 class="display-4">Comuni</h1>
+  <p class="lead">Comuniは社内コミュニケーション用のSNSアプリです。</p>
+  <hr class="my-4">
+  <p>積極的に交流を深めて、人間力を高めよう</p>
+  <a class="btn btn-primary btn-lg disabled" href="#" role="button">SNSでshare↓</a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <img class="card-img-top" src="static/images/3724095_s.jpg" alt="業務報告のイメージ画像">
+        <div class="card-body">
+          <h4 class="card-title">業務報告</h4>
+          <p class="card-text">業務計画や業務内容に関する報告。報連相を徹底しよう！</p>
+          <a href="{% url 'todo' %}" class="btn btn-primary">詳細を見る</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <img class="card-img-top" src="static/images/3494319_s.jpg" alt="雑談のイメージ画像">
+        <div class="card-body">
+          <h4 class="card-title">雑談</h4>
+          <p class="card-text">業務中にふと思ったことを呟くのもよし、飲み会のお誘いをするもよし！</p>
+          <a href="{% url 'list' %}" class="btn btn-primary">詳細を見る</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <img class="card-img-top" src="static/images/2017786_s.jpg" alt="新人紹介のイメージ画像">
+        <div class="card-body">
+          <h4 class="card-title">新人紹介</h4>
+          <p class="card-text">入社したばかりの新入社員の紹介です。みんなでフォローし、高めあいましょう！</p>
+          <a href="#" class="btn btn-primary disabled">Comming Soon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
