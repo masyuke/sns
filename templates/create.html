@@ -15,6 +15,7 @@
       <h10 class="card-title"><p>内容：<input type='text' name='content'></p></h10>
       <h10 class="card-title"><p>画像：<input type='file' name='images'></p></h10>
       <input type='hidden' name='author' value='{{ user.username }}'>
+      <input type='hidden' name='user' value='{{ user.id }}'>
       <input type='submit' value='作成する' class="btn btn-primary">
     </form>
   </div>

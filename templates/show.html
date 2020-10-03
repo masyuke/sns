@@ -15,13 +15,22 @@
 </div>
 <div class='container'>
   <h1>進行中</h1>
-  <div class="alert alert-success task" role="alert" id="move">
+  {% if object.status != '完了' %}
+  <div class="alert alert-success task" role="alert" id="move" data-todoid="{{ object.id }}">
     <p>タイトル：{{ object.title }}</p>
     <p>内容：{{ object.memo }}</p>
     <p>期日：{{ object.duedate }}</p>
   </div>
+  {% endif %}
   <h1>完了</h1>
   <div class='todo' style='height:146px; background-color: red;' >
+    {% if object.status == '完了' %}
+    <div class="alert alert-danger task" role="alert" id="move" data-todoid="{{ object.id }}">
+      <p>タイトル：{{ object.title }}</p>
+      <p>内容：{{ object.memo }}</p>
+      <p>期日：{{ object.duedate }}</p>
+    </div>
+    {% endif %}
   </div>
 <a href="{% url 'todo' %}">業務一覧ページへ</a>
 {% else %}

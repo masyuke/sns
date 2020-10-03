@@ -77,7 +77,7 @@ def readfunc(request, pk):
 class SnsCreate(CreateView):
     template_name = 'create.html'
     model = SnsModel
-    fields = ('title', 'content', 'author', 'images')
+    fields = ('title', 'content', 'author', 'images', 'user')
     success_url = reverse_lazy('list')
 
 @login_required
@@ -97,7 +97,7 @@ class TodoDetail(DetailView):
 class TodoCreate(CreateView):
     template_name = 'create-todo.html'
     model = TodoModel
-    fields =('title', 'memo', 'priority', 'duedate')
+    fields =('title', 'memo', 'priority', 'duedate', 'user')
     success_url = reverse_lazy('todo')
 
 class TodoDelete(DeleteView):
@@ -113,6 +113,19 @@ class TodoUpdate(UpdateView):
 
 def mypagefunc(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    posts = user.snsmodel_set.all()
-    return render(request, 'my_page.html', {'user': user, 'posts': posts})
+    print(user.id)
+    posts = SnsModel.objects.filter(user=user)
+    todos = TodoModel.objects.filter(user=user)
+    return render(request, 'my_page.html', {'user': user, 'posts': posts, 'todos': todos})
     
+def move(request):
+    id = request.GET.get("id")
+    status = '完了'
+    todo = TodoModel.objects.get(pk=id)
+    todo.status = status
+    todo.save()
+    result = {
+        'id': todo.id,
+        'status': todo.status
+    }
+    return JsonResponse(result)

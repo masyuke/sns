@@ -10,13 +10,21 @@ $(function(){
   })
 
   $('.todo').on('drop',(e,ui)=>{
-    // ドロップした要素を赤い資格に追加する
     e.target.appendChild(ui.draggable[0]);
-    // ドロップした要素の色を変更する
     ui.draggable.removeClass('alert-success').addClass('alert-danger');
-    // サーバーと非同期で通信
-    $.ajax('url',{パラメータ}).done( (res) => {
-      // 通信が完了した際に実行する処理を書く
+    let elem = e.target
+    let value = elem.dataset.value;
+    //let data = {id: $('#move').text(), status: value};
+    let data = {id: $('#move').data('todoid'), status: value};
+    $.ajax({
+      type: "get",
+      url: "move",
+      processData: true,
+      contentType: false,
+      data: data,
+      dataType: "json",
+    }).done((response) => {
+      console.log(response);
     })
   })
 });

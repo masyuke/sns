@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signupfunc, loginfunc, listfunc, logoutfunc, detailfunc, goodfunc, readfunc, SnsCreate, TodoList, TodoDetail, TodoCreate, TodoDelete, TodoUpdate, mypagefunc
+from .views import signupfunc, loginfunc, listfunc, logoutfunc, detailfunc, goodfunc, readfunc, SnsCreate, TodoList, TodoDetail, TodoCreate, TodoDelete, TodoUpdate, mypagefunc, move
 from . import views
 urlpatterns = [
     path('signup/', signupfunc, name='signup'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('delete-todo/<int:pk>', TodoDelete.as_view(), name='delete-todo'),
     path('update-todo/<int:pk>', TodoUpdate.as_view(), name='update-todo'),
     path('my_page/<int:user_id>', mypagefunc, name='my_page'),
+    path('show/move', move, name="move")
 ]
