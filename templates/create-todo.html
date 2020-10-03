@@ -13,10 +13,10 @@
     <h6 class="card-subtitle mb-2 text-muted">新規作成</h6>
     <form action='' method='POST' enctype='multipart/form-data'>{% csrf_token %}
       {# {{form.as_p}} #}
-      <p>title: {{ form.title }}</p>
-      <p>memo: {{ form.memo }}</p>
-      <p>priority: {{ form.priority }}</p>
-      <p>duedate: {{ form.duedate }}</p>
+      <p>タイトル: {{ form.title }}</p>
+      <p>内容: {{ form.memo }}</p>
+      <p>優先度: {{ form.priority }}</p>
+      <p>期日: {{ form.duedate }}</p>
       <input type='hidden' name='user' value='{{ user.id }}'>
       <input type='submit' value='作成する' class="btn btn-primary">
     </form>

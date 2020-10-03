@@ -22,7 +22,7 @@
     <div class="p-1 border border-secondary text-center pt-5" style="min-width: 300px; min-height: 225px;">No Image</div>
     {% endif %}
     <div class="card-body">
-      <h4 class="card-title"><a href="#">{{post.title|truncatechars:10 | linebreaksbr}}</a></h4>
+      <h4 class="card-title"><a href="{% url 'detail' post.pk %}">{{post.title|truncatechars:10 | linebreaksbr}}</a></h4>
       <p class="card-text">
         {{ post.content|truncatechars:17 }}
       </p>
@@ -41,7 +41,7 @@
     <div class="p-1 border border-secondary text-center pt-5" style="min-width: 300px; min-height: 300px;">No Image</div>
     {% endif %}
     <div class="card-body">
-      <h4 class="card-title"><a href="#title">{{todo.title|truncatechars:10 | linebreaksbr}}</a></h4>
+      <h4 class="card-title"><a href="{% url 'show' todo.pk %}">{{todo.title|truncatechars:10 | linebreaksbr}}</a></h4>
       <p class="card-text">
         {{ todo.memo|truncatechars:17 }}
       </p>
