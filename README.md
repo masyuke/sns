@@ -13,7 +13,7 @@
  3.に関しては現在未実装ですが、離職率の高さを低下させるためには既存社員にもっと新入社員のことを知ってもらうことが重要だと考えました。
 
 # 概要
- https://in-house-comuni.herokuapp.com/
+ https://in-house-comuni.herokuapp.com/  
  社内SNSで業務投稿、雑談投稿ができます。
 
 # テストアカウント
